@@ -17,4 +17,4 @@ tower-lsp = { package = "deno_tower_lsp", version = "=0.4.3", features = [
     "proposed",
 ] }
 parking_lot = "0.12.3"
-project_k = { path = "../project_k_c" }
+parser = { path = "../../project_k/parser" }

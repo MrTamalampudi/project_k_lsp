@@ -1,7 +1,7 @@
 use parking_lot::RwLock;
-use project_k::parser::Parser;
-use project_k::token::Token;
-use project_k::{source_code_to_lexer, CompilationContext};
+use parser::parser::Parser;
+use parser::token::Token;
+use parser::{source_code_to_lexer, CompilationContext};
 use std::collections::HashMap;
 use std::env;
 use std::path::PathBuf;
@@ -13,6 +13,7 @@ use tower_lsp::lsp_types::*;
 use tower_lsp::{Client, LanguageServer, LspService, Server};
 
 mod completion;
+mod semantic_tokens;
 
 pub struct Backend {
     client: Client,
@@ -112,6 +113,12 @@ impl LanguageServer for Backend {
             params.content_changes.get(0).unwrap().text.clone(),
         )
         .await;
+        self.client
+            .show_message(
+                MessageType::INFO,
+                params.content_changes.get(0).unwrap().text.clone(),
+            )
+            .await
     }
 
     async fn code_lens(

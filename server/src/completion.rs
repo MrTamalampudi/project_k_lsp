@@ -1,10 +1,6 @@
 use std::cmp::Ordering;
 
-use project_k::{
-    enums::{Browser, Capabilities},
-    keywords::TokenType,
-    token::Token,
-};
+use parser::{keywords::TokenType, token::Token};
 use tower_lsp::lsp_types::{CompletionItem, Position};
 
 pub struct IntelliSense {
@@ -23,7 +19,6 @@ impl IntelliSense {
     pub fn complete(&self) -> Vec<CompletionItem> {
         let (index, filetype, highlevel) = self.get_highlevel_and_filetype_token();
         match highlevel {
-            TokenType::CAPABILITIES => self.complete_capabilities(index),
             TokenType::TESTSTEPS => self.complete_teststeps(index),
             _ => todo!(),
         }
@@ -31,18 +26,6 @@ impl IntelliSense {
 
     fn complete_teststeps(&self, index: usize) -> Vec<CompletionItem> {
         todo!()
-    }
-
-    fn complete_capabilities(&self, index: usize) -> Vec<CompletionItem> {
-        let token_type = self.tokens.get(index - 1).unwrap().get_token_type();
-        if token_type == TokenType::NEW_LINE {
-            complete_capbility_key()
-        } else if token_type == TokenType::ASSIGN_OP {
-            let token = self.tokens.get(index - 2).unwrap().get_token_type();
-            complete_capability_value(token)
-        } else {
-            complete_capbility_key()
-        }
     }
 
     fn get_testcase_high_level_token(&self, index: usize) -> TokenType {
@@ -110,31 +93,3 @@ impl IntelliSense {
 }
 
 //here token is capability key token
-fn complete_capability_value(token: TokenType) -> Vec<CompletionItem> {
-    let string = match token {
-        TokenType::IDENTIFIER(string) => string,
-        _ => {
-            return vec![];
-        }
-    };
-    let capbility = Capabilities::from_string(&string);
-    let item = match capbility {
-        Capabilities::BROWSER => Browser::to_vector(),
-        _ => vec![],
-    };
-
-    item.iter()
-        .map(|item_| {
-            CompletionItem::new_simple(item_.clone(), String::from("Browser").to_uppercase())
-        })
-        .collect()
-}
-
-fn complete_capbility_key() -> Vec<CompletionItem> {
-    Capabilities::to_vector()
-        .iter()
-        .map(|capability| {
-            CompletionItem::new_simple(capability.clone(), String::from("Capbilities"))
-        })
-        .collect()
-}
