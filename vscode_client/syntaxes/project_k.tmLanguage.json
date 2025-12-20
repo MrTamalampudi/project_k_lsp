@@ -5,10 +5,15 @@
     "scopeName": "source.project_k",
     "patterns": [
         {
-            "include": "#high_level_tokens"
+            "name": "entity.name.type.interface.project_k",
+            "match": "#[a-z]+"
         },
         {
-            "include": "#actions"
+            "name": "constant.numeric",
+            "match": "[+-]?(\\d+(\\.\\d*)?)$"
+        },
+        {
+            "include": "#methods"
         },
         {
             "include": "#string"
@@ -37,7 +42,7 @@
             "patterns": [
                 {
                     "name":"variable.project_k",
-                    "match": "[a-zA-z]"
+                    "match": "[a-zA-z_][a-zA-z0-9_]*"
                 }
             ]
         },
@@ -49,18 +54,18 @@
                 }
             ]
         },
-        "actions":{
+        "methods":{
             "patterns": [
                 {
-                    "name":"entity.name.type.interface.project_k",
-                    "match": "(navigate|click|back)"
+                    "name":"entity.name.function.project_k",
+                    "match": """(navigate|NAVIGATE|click|CLICK|back|BACK|forward|FORWARD|refresh|REFRESH|get|GET|wait|WAIT|assert|ASSERT|enter|ENTER|close|CLOSE)"""
                 }
             ]
         },
         "high_level_tokens":{
             "patterns": [
                 {
-                    "name": "entity.name.function.project_k",
+                    "name": "entity.name.type.interface.project_k",
                     "match": "#[a-z]+"
                 }
             ]

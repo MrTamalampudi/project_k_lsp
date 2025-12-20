@@ -1,0 +1,9 @@
+{
+    "Navigate": {
+		"prefix": "navigate",
+		"body": [
+			"navigate ${1:url}","$0"
+		],
+		"description": "Navigate url"
+	}
+}
