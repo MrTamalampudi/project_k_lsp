@@ -1,0 +1,14 @@
+{
+    "Navigate": {
+		"prefix": "navigate",
+		"body": [
+			"navigate ${1:url}","$0"
+		],
+		"description": "Navigate url"
+	},
+	"get": {
+		"prefix":["get","get current"],
+		"body":["get ${1|current title,element|}","$0"],
+		"description":"lorem ipsum high low altitude lot s of up s and downs"
+	}
+}
