@@ -1,14 +1,25 @@
 {
     "Navigate": {
-		"prefix": "navigate",
+		"prefix": ["navigate url"],
 		"body": [
-			"navigate ${1:url}","$0"
+			"navigate ${1:url}\n"
 		],
-		"description": "Navigate url"
+		"description": "Load a new web page in the current browser window."
 	},
 	"get": {
-		"prefix":["get","get current"],
-		"body":["get ${1|current title,element|}","$0"],
-		"description":"lorem ipsum high low altitude lot s of up s and downs"
+		"prefix":["click element"],
+		"body":["click ${1:element}\n"]
+	},
+	"if":{
+		"prefix":["if"],
+		"body":["if ${1:codition} {","\t$2","}$0\n"]
+	},
+	"else if": {
+		"prefix":["else if"],
+		"body":["else if ${1:codition} {","\t$2","}$0\n"]
+	},
+	"else": {
+		"prefix":["else"],
+		"body":["else {","\t$1","}$0\n"]
 	}
 }

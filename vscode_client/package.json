@@ -32,19 +32,22 @@
       }
     ],
     "grammars": [
-            {
-                "language": "project_k",
-                "scopeName": "source.project_k",
-                "path": "./syntaxes/project_k.tmLanguage.json"
-            }
-        ],
-        "snippets": [
-          {
-            "language": "project_k",
-            "scopeName": "source.project_k",
-            "path": "./snippets/project_k.code_snippets"
-          }
-        ]
+      {
+        "language": "project_k",
+        "scopeName": "source.project_k",
+        "path": "./syntaxes/project_k.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "project_k",
+        "scopeName": "source.project_k",
+        "path": "./snippets/project_k.code_snippets.json"
+      }
+    ],
+    "configurationDefaults": {
+      "editor.snippetSuggestions": "top"
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

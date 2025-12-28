@@ -22,10 +22,16 @@
             "include": "#string"
         },
         {
-            "include": "#variables"
+            "include": "#comments"
         },
         {
-            "include": "#comments"
+            "include": "#control-flow"
+        },
+        {
+            "include": "#boolean"
+        },
+        {
+            "include": "#variables"
         }
     ],
     "repository": {
@@ -65,19 +71,27 @@
                 }
             ]
         },
-        "high_level_tokens":{
-            "patterns": [
-                {
-                    "name": "entity.name.type.interface.project_k",
-                    "match": "#[a-z]+"
-                }
-            ]
-        },
         "parameters":{
             "patterns": [
                 {
                     "name":"entity.name.type",
                     "match": "(title|url|element|attribute|current)" 
+                }
+            ]
+        },
+        "control-flow":{
+            "patterns": [
+                {
+                    "name":"keyword.control",
+                    "match": "(if|else|while)" 
+                }
+            ]
+        },
+        "boolean":{
+            "patterns": [
+                {
+                    "name":"constant.language",
+                    "match": "(true|false)" 
                 }
             ]
         }
