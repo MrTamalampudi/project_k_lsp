@@ -6,20 +6,24 @@
 		],
 		"description": "Load a new web page in the current browser window."
 	},
-	"get": {
+	"Click": {
 		"prefix":["click element"],
 		"body":["click ${1:element}\n"]
 	},
-	"if":{
+	"If":{
 		"prefix":["if"],
 		"body":["if ${1:codition} {","\t$2","}$0\n"]
 	},
-	"else if": {
+	"Else if": {
 		"prefix":["else if"],
 		"body":["else if ${1:codition} {","\t$2","}$0\n"]
 	},
-	"else": {
+	"Else": {
 		"prefix":["else"],
 		"body":["else {","\t$1","}$0\n"]
+	},
+	"While": {
+		"prefix":["while"],
+		"body":["while ${1:codition} {","\t$2","}\n"]
 	}
 }

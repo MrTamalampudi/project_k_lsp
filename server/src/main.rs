@@ -13,10 +13,10 @@ use tower_lsp::jsonrpc::Result as LspResult;
 use tower_lsp::lsp_types::*;
 use tower_lsp::{Client, LanguageServer, LspService, Server};
 
-use crate::semantic_tokens::{update_semantic_tokens, SEMANTIC_TOKEN_TYPES};
+// use crate::semantic_tokens::{update_semantic_tokens, SEMANTIC_TOKEN_TYPES};
 
 mod completion;
-mod semantic_tokens;
+// mod semantic_tokens;
 
 pub struct Backend {
     client: Client,
@@ -92,31 +92,31 @@ impl LanguageServer for Backend {
                 text_document_sync: Some(TextDocumentSyncCapability::Kind(
                     TextDocumentSyncKind::FULL,
                 )),
-                semantic_tokens_provider: Some(
-                    SemanticTokensServerCapabilities::SemanticTokensRegistrationOptions(
-                        SemanticTokensRegistrationOptions {
-                            text_document_registration_options: {
-                                TextDocumentRegistrationOptions {
-                                    document_selector: Some(vec![DocumentFilter {
-                                        language: Some("project_k".to_string()),
-                                        scheme: Some("file".to_string()),
-                                        pattern: Some("*.ll".to_string()),
-                                    }]),
-                                }
-                            },
-                            semantic_tokens_options: SemanticTokensOptions {
-                                work_done_progress_options: WorkDoneProgressOptions::default(),
-                                legend: SemanticTokensLegend {
-                                    token_types: SEMANTIC_TOKEN_TYPES.to_vec(),
-                                    token_modifiers: vec![],
-                                },
-                                range: Some(false),
-                                full: Some(SemanticTokensFullOptions::Bool(true)),
-                            },
-                            static_registration_options: StaticRegistrationOptions::default(),
-                        },
-                    ),
-                ),
+                // semantic_tokens_provider: Some(
+                //     SemanticTokensServerCapabilities::SemanticTokensRegistrationOptions(
+                //         SemanticTokensRegistrationOptions {
+                //             text_document_registration_options: {
+                //                 TextDocumentRegistrationOptions {
+                //                     document_selector: Some(vec![DocumentFilter {
+                //                         language: Some("project_k".to_string()),
+                //                         scheme: Some("file".to_string()),
+                //                         pattern: Some("*.ll".to_string()),
+                //                     }]),
+                //                 }
+                //             },
+                //             semantic_tokens_options: SemanticTokensOptions {
+                //                 work_done_progress_options: WorkDoneProgressOptions::default(),
+                //                 legend: SemanticTokensLegend {
+                //                     token_types: SEMANTIC_TOKEN_TYPES.to_vec(),
+                //                     token_modifiers: vec![],
+                //                 },
+                //                 range: Some(false),
+                //                 full: Some(SemanticTokensFullOptions::Bool(true)),
+                //             },
+                //             static_registration_options: StaticRegistrationOptions::default(),
+                //         },
+                //     ),
+                // ),
                 ..Default::default()
             },
             ..Default::default()
@@ -148,23 +148,23 @@ impl LanguageServer for Backend {
             )
             .await
     }
-    async fn semantic_tokens_full(
-        &self,
-        params: SemanticTokensParams,
-        _: CancellationToken,
-    ) -> Result<Option<SemanticTokensResult>> {
-        let tokens = self.token_map.get(&params.text_document.uri).unwrap();
-        let st = update_semantic_tokens(&tokens);
+    // async fn semantic_tokens_full(
+    //     &self,
+    //     params: SemanticTokensParams,
+    //     _: CancellationToken,
+    // ) -> Result<Option<SemanticTokensResult>> {
+    //     let tokens = self.token_map.get(&params.text_document.uri).unwrap();
+    //     let st = update_semantic_tokens(&tokens);
 
-        self.client
-            .show_message(MessageType::INFO, format!("{:#?}", st))
-            .await;
+    //     self.client
+    //         .show_message(MessageType::INFO, format!("{:#?}", st))
+    //         .await;
 
-        Ok(Some(SemanticTokensResult::Tokens(SemanticTokens {
-            result_id: None,
-            data: st,
-        })))
-    }
+    //     Ok(Some(SemanticTokensResult::Tokens(SemanticTokens {
+    //         result_id: None,
+    //         data: st,
+    //     })))
+    // }
 
     async fn code_lens(
         &self,
