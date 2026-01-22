@@ -19,6 +19,9 @@
             "include": "#parameters"
         },
         {
+            "include": "#helpers"
+        },
+        {
             "include": "#string"
         },
         {
@@ -67,7 +70,7 @@
             "patterns": [
                 {
                     "name":"entity.name.function.project_k",
-                    "match": "(navigate|click|back|forward|refresh|get|wait|assert|enter|close)" 
+                    "match": "(navigate|click|back|forward|refresh|get|wait|assert|enter|close|is|accept|dismiss)" 
                 }
             ]
         },
@@ -75,7 +78,7 @@
             "patterns": [
                 {
                     "name":"entity.name.type",
-                    "match": "(title|url|element|attribute|current)" 
+                    "match": "(attribute|element|url|title|css|value|text|tag|name|alert|current|displayed|enabled|selected)" 
                 }
             ]
         },
@@ -83,7 +86,7 @@
             "patterns": [
                 {
                     "name":"keyword.control",
-                    "match": "(if|else|while)" 
+                    "match": "(if|else|while|for)" 
                 }
             ]
         },
@@ -92,6 +95,14 @@
                 {
                     "name":"constant.language",
                     "match": "(true|false)" 
+                }
+            ]
+        },
+        "helpers":{
+            "patterns": [
+                {
+                    "name":"constant.language",
+                    "match": "(from|to|in|and|or)" 
                 }
             ]
         }

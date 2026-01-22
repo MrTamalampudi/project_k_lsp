@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.98.2"
   },
+  "repository": {"url": "https://github.com/MrTamalampudi/project_k_lsp"},
   "categories": [
     "Programming Languages"
   ],

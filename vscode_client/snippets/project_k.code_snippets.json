@@ -1,29 +1,194 @@
 {
     "Navigate": {
-		"prefix": ["navigate url"],
-		"body": [
-			"navigate ${1:url}\n"
-		],
-		"description": "Load a new web page in the current browser window."
-	},
-	"Click": {
-		"prefix":["click element"],
-		"body":["click ${1:element}\n"]
-	},
-	"If":{
-		"prefix":["if"],
-		"body":["if ${1:codition} {","\t$2","}$0\n"]
-	},
-	"Else if": {
-		"prefix":["else if"],
-		"body":["else if ${1:codition} {","\t$2","}$0\n"]
-	},
-	"Else": {
-		"prefix":["else"],
-		"body":["else {","\t$1","}$0\n"]
-	},
-	"While": {
-		"prefix":["while"],
-		"body":["while ${1:codition} {","\t$2","}\n"]
-	}
+        "prefix": ["navigate"],
+        "body": [
+            "navigate ${1:url}$0"
+        ],
+        "description": "Load a new web page."
+    },
+    "Close": {
+        "prefix": ["close"],
+        "body": [
+            "close$0"
+        ],
+        "description": "Close the current window."
+    },
+    "Back": {
+        "prefix": ["back"],
+        "body": [
+            "back$0"
+        ],
+        "description": "Move back in browser history."
+    },
+    "Forward": {
+        "prefix": ["forward"],
+        "body": [
+            "forward$0"
+        ],
+        "description": "Move forward in browser history."
+    },
+    "Refresh": {
+        "prefix": ["refresh"],
+        "body": [
+            "refresh$0"
+        ],
+        "description": "Refresh the current page."
+    },
+    "Click": {
+        "prefix": ["click element"],
+        "body": [
+            "click ${1:element}$0"
+        ],
+        "description": "Click on a specific element."
+    },
+    "Enter Element": {
+        "prefix": ["enter element"],
+        "body": [
+            "enter ${1:data} in element ${2:element}$0"
+        ],
+        "description": "Type data into a specific input element."
+    },
+    "Wait": {
+        "prefix": ["wait"],
+        "body": [
+            "wait ${1:seconds}$0"
+        ],
+        "description": "Pause execution for a specific time."
+    },
+    "Assert": {
+        "prefix": ["assert"],
+        "body": [
+            "assert ${1:data}$0"
+        ],
+        "description": "Assert that a value is true."
+    },
+    "Accept Alert": {
+        "prefix": ["accept alert"],
+        "body": [
+            "accept alert$0"
+        ],
+        "description": "Accept the active JavaScript alert."
+    },
+    "Dismiss Alert": {
+        "prefix": ["dismiss alert"],
+        "body": [
+            "dismiss alert$0"
+        ],
+        "description": "Dismiss the active JavaScript alert."
+    },
+    "Enter Alert": {
+        "prefix": ["enter alert"],
+        "body": [
+            "enter ${1:data} in alert$0"
+        ],
+        "description": "Type text into an alert prompt."
+    },
+    "If": {
+        "prefix": ["if"],
+        "body": [
+            "if ${1:condition} {",
+            "\t$2",
+            "}$0"
+        ],
+        "description": "If conditional block."
+    },
+    "Else If": {
+        "prefix": ["else if"],
+        "body": [
+            "else if ${1:condition} {",
+            "\t$2",
+            "}$0"
+        ],
+        "description": "Else If conditional block."
+    },
+    "Else": {
+        "prefix": ["else"],
+        "body": [
+            "else {",
+            "\t$1",
+            "}$0"
+        ],
+        "description": "Else block."
+    },
+    "While": {
+        "prefix": ["while"],
+        "body": [
+            "while ${1:condition} {",
+            "\t$2",
+            "}$0"
+        ],
+        "description": "While loop block."
+    },
+    "For Loop": {
+        "prefix": ["for"],
+        "body": [
+            "for ${1:var} in ${2:collection} {",
+            "\t$3",
+            "}$0"
+        ],
+        "description": "For loop block."
+    },
+    "Get Title": {
+        "prefix": ["get title"],
+        "body": [
+            "get title$0"
+        ],
+        "description": "Get page title."
+    },
+    "Get Current URL": {
+        "prefix": ["get current url"],
+        "body": [
+            "get current url$0"
+        ],
+        "description": "Get current page URL."
+    },
+    "Get Attribute": {
+        "prefix": ["get attribute"],
+        "body": [
+            "get attribute ${1:data} from element ${2:element}$0"
+        ],
+        "description": "Get specific attribute from an element."
+    },
+    "Is Element Displayed": {
+        "prefix": ["is element displayed"],
+        "body": [
+            "is element ${1:element} displayed$0"
+        ],
+        "description": "Check if element is visible."
+    },
+    "Is Element Enabled": {
+        "prefix": ["is element enabled"],
+        "body": [
+            "is element ${1:element} enabled$0"
+        ],
+        "description": "Check if element is enabled."
+    },
+    "Is Element Selected": {
+        "prefix": ["is element selected"],
+        "body": [
+            "is element ${1:element} selected$0"
+        ],
+        "description": "Check if element is selected."
+    },
+    "Get Text": {
+        "prefix": ["get text"],
+        "body": [
+            "get text from element ${1:element}$0"
+        ],
+        "description": "Get visible text from an element."
+    },
+    "Get CSS Value": {
+        "prefix": ["get css value"],
+        "body": [
+            "get css value ${1:data} from element ${2:element}$0"
+        ],
+        "description": "Get computed CSS value from an element."
+    },
+    "Get Tag Name": {
+        "prefix": ["get tag name"],
+        "body": [
+            "get tag name from element ${1:element}$0"
+        ],
+        "description": "Get HTML tag name of an element."
+    }
 }

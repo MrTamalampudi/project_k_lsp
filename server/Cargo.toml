@@ -19,4 +19,3 @@ tower-lsp = { package = "deno_tower_lsp", version = "=0.4.3", features = [
 parking_lot = "0.12.3"
 parser = { path = "../../project_k/parser" }
 span = { path = "../../project_k/span" }
-dashmap = "6.1.0"
